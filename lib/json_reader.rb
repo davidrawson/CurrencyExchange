@@ -1,6 +1,13 @@
-class JsonReader(filename)
-    def read
-        file = File.read("eurofxref-hist-90d.json")
-        JSON.parse(file)
-    end
+require "json"
+
+class JsonReader
+
+  def initialize(filename)
+    @filename = filename
+  end
+
+  def read
+    file = File.read(@filename)
+    JSON.parse(file)
+  end
 end
