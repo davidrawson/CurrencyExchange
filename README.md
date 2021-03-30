@@ -46,7 +46,7 @@ We'd love to hear your thoughts around any design decisions you made while codin
 
 ### First impressions
 
-The file readers class(es) should implement an interface forcing certain things and maintain consistency. As Ruby doesn't untilise interfaces that idea was amended.
+The file readers class(es) should implement an interface forcing certain things and maintain consistency. As Ruby doesn't utilise interfaces that idea was amended.
 
 ### Reader Factory
 
@@ -55,9 +55,11 @@ The Factory pattern should have an abstract or base class but I thought it was u
 
 ### Class Responsibilities
 
-The file reader and its factory should just read the file into the hash; they have no need to know of base currencies.
+The factory should just produce a reader.
 
-The base/home currency and how the filename is entered is probably best declared in the main module, perhaps with getter and setter methods when other currencies and file formats are added.
+The file reader should just read the file into the hash; they have no need to know of base currencies.
+
+The base/home currency and the data filename is probably best declared in the main module, perhaps with getter and setter methods when other currencies and file formats are added.
 
 The main CurrencyExchange module should call the factory to create the reader and parse to the hash; it is not the job of a calculator class.
 
