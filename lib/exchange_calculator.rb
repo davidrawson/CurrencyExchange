@@ -39,8 +39,11 @@ class ExchangeCalculator
   def validate_currencies(from_currency, to_currency, date_string)
     currencies = @rates[date_string]
 
-    raise "#{from_currency} is not currently supported" unless currencies.key?(from_currency) || from_currency == @base_currency
-    raise "#{to_currency} is not currently supported" unless currencies.key?(to_currency) || to_currency == @base_currency
+    raise "#{from_currency} is not currently supported" unless \
+    currencies.key?(from_currency) || from_currency == @base_currency
+    
+    raise "#{to_currency} is not currently supported" unless \
+    currencies.key?(to_currency) || to_currency == @base_currency
   end
 
   # Public: Ensure the given date is in the rates hash

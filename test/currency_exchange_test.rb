@@ -31,7 +31,6 @@ class CurrencyExchangeTest < Test::Unit::TestCase
 
   def test_calculate_from_and_to_currencies
     fixture = ExchangeCalculator.new(@base_currency, @test_rate)
-
     correct_rate = 9.786884735202491
     assert_equal correct_rate, fixture.from_currency_to_to_currency("2021-02-28", "HUF", "ZAR")
   end

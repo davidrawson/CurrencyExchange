@@ -8,22 +8,68 @@ Please see the INSTRUCTIONS.md file for more information.
 
 ## Your Solution Setup and Run Instructions
 
-Please include instructions on how to setup and run your solution here.
+Setup is as per your instructions
+
+1. Install gems:
+
+```
+bundle install
+```
+
+2. Run tests:
+
+```
+bundle exec ruby test/run_tests.rb
+```
+
+3. Start a console session & load the template library:
+
+```
+bundle exec irb -I lib -r ./lib/currency_exchange.rb
+```
+
+4. Calculate an exchange rate:
+
+```
+CurrencyExchange.rate(Date.new(2018, 11, 22), "USD", "GBP")
+```
+
+5. Generate documentation:
+
+```
+yard doc --plugin yard-tomdoc
+```
 
 ## Your Design Decisions
 
 We'd love to hear your thoughts around any design decisions you made while coding your solution.
 
-First impressions:
-The file readers class(es) should implement an interface forcing certain things. A factory could be used for for these instances. Should the file reader know its base currency? No, it just reads the file. How to interogate the file and what the base currency is should be dealt with elsewhere. The base/home currency and how the filename is entered is a significant issue to resolve.
+### First impressions
 
-Problem: how to set the base currency when the arguments for rate() cannot be changed.
-How to disguish between the json reader for EUR and json reader for GBP
-They're gonna have to be hard-coded, perhaps with getter and setter methods
+The file readers class(es) should implement an interface forcing certain things and maintain consistency. As Ruby doesn't untilise interfaces that idea was amended.
 
-The Factory: Seemed the best way to enable different formats to be added in the future. I did consider whether the Adapter pattern would work but decided on Factory.
-The Factory pattern should have an abstract or base class but I thought it was unncessary until a second format was to be implemented.
+### Reader Factory
 
-Added e2mmap to the gemfileas it was required by irb. Unclear if this was an issue with my installation.
+A factory seemed the best way to enable different file formats (such as xml) to be added in the future whilst maintaining consistency.
+The Factory pattern should have an abstract or base class but I thought it was unncessary until a second file format was to be implemented.
 
-Refactored to create the Reader and get the rates from the CurrencyExchange class to aid with testing.
+### Class Responsibilities
+
+The file reader and its factory should just read the file into the hash; they have no need to know of base currencies.
+
+The base/home currency and how the filename is entered is probably best declared in the main module, perhaps with getter and setter methods when other currencies and file formats are added.
+
+The main CurrencyExchange module should call the factory to create the reader and parse to the hash; it is not the job of a calculator class.
+
+The ExchangeCalculator calculates the exchange rate _and_ does the currency and date validation. There is a good argument for stripping the validation out to its own class, and I would have done had the class got any larger.
+
+### Other Additions
+
+Added e2mmap to the gemfile as it was required by irb. Unclear if this was an issue with my installation.
+
+The TomDoc documentation has been added, though I couldn't get it to generate anything. Again, unclear if this was an issue with my installation.
+
+### Next Steps
+
+Whilst the test coverage for the calculations is reasonable, more tests could be added for the factory and reader.
+The validation could be in a standalone class.
