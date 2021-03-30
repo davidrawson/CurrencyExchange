@@ -42,8 +42,6 @@ yard doc --plugin yard-tomdoc
 
 ## Your Design Decisions
 
-We'd love to hear your thoughts around any design decisions you made while coding your solution.
-
 ### First impressions
 
 The file readers class(es) should implement an interface forcing certain things and maintain consistency. As Ruby doesn't utilise interfaces that idea was amended.
