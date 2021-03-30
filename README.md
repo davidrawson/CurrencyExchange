@@ -31,7 +31,7 @@ bundle exec irb -I lib -r ./lib/currency_exchange.rb
 4. Calculate an exchange rate:
 
 ```
-CurrencyExchange.rate(Date.new(2018, 11, 22), "USD", "GBP")
+CurrencyExchange.rate(Date.new(2018, 09, 27), "EUR", "GBP")
 ```
 
 5. Generate documentation:
