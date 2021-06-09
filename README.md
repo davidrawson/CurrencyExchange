@@ -1,6 +1,6 @@
-# FreeAgent Coding Challenge
+# Coding Challenge
 
-Thank you for your interest in the FreeAgent Coding Challenge. This template is a barebones guide to get you started. Please add any gems, folders, files, etc. you see fit in order to produce a solution you're proud of.
+Thank you for your interest in the Coding Challenge. This template is a barebones guide to get you started. Please add any gems, folders, files, etc. you see fit in order to produce a solution you're proud of.
 
 ## Coding Challenge Instructions
 
